@@ -93,11 +93,16 @@
       padding: 20px;
       margin: 10px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      display: block;
+      display: none;
       font-size: 18px;
       font-family: 'Arial', sans-serif;
       color: #333;
+      cursor: pointer;
       text-align: center;
+    }
+
+    .card.show {
+      display: block;
     }
 
     .card-button {
@@ -135,21 +140,122 @@
     </div>
   </div>
 
-  <script>
+   <script>
     const lid = document.getElementById('lid');
     const cardsContainer = document.getElementById('cards-container');
     const reasons = [
       "You make my world brighter.",
       "I love the way you laugh.",
       "You're my greatest support.",
-      "You make me feel special everyy dayyy.",
-      "You're sooo cuteeee.",
+      "You make me feel special every day.",
+      "You're so cute.",
       "You're my safe place.",
       "You're the best listener.",
       "You always know how to make me smile.",
       "You believe in me even when I don't.",
       "You’re my favorite person to spend time with.",
-      // ... the rest of the reasons
+      "You make ordinary moments extraordinary.",
+      "You’re my home, no matter where we are.",
+      "Your kindness is inspiring.",
+      "I admire your strength.",
+      "The way you look.",
+      "You always know how to cheer me up.",
+      "I love the way you support my dreams.",
+      "You make me want to be a better person.",
+      "You have the biggest heart.",
+      "I love how thoughtful you are.",
+      "You never fail to make me laugh.",
+      "You make me feel like the luckiest person alive.",
+      "You’re my best friend and my love.",
+      "I’m always excited to see you.",
+      "You make every day brighter.",
+      "Your beautiful eyes.",
+      "You have the most beautiful soul.",
+      "I’m so grateful for your love.",
+      "I’m so happy to have you in my life.",
+      "You’re always there when I need you.",
+      "I love how you make everything fun.",
+      "You make me feel like I belong.",
+      "Your smile is my favorite sight.",
+      "You inspire me to chase my dreams.",
+      "You are my forever person.",
+      "You are the love of my life.",
+      "I love our memories together.",
+      "You’re the most amazing person I know.",
+      "I love how we always understand each other.",
+      "You make my heart skip a beat.",
+      "You’re my happiness in human form.",
+      "I feel complete with you.",
+      "You make life better just by being in it.",
+      "You’re the best part of my day.",
+      "Your love makes everything better.",
+      "You are my soulmate.",
+      "You bring out the best in me.",
+      "You make my world beautiful.",
+      "Your love is my favorite melody.",
+      "I feel at peace with you.",
+      "You’re the reason for my smile.",
+      "I can’t imagine life without you.",
+      "You make me feel loved every single day.",
+      "You make my dreams come true.",
+      "I love how you make me feel important.",
+      "You are my dream come true.",
+      "You’re the best part of me.",
+      "You make everything feel right.",
+      "You bring joy into my life.",
+      "You make every moment unforgettable.",
+      "I love the way you look at me.",
+      "You’re my reason to smile every day.",
+      "You’re my partner in every adventure.",
+      "I love how you brighten up my life.",
+      "You make me feel like the most loved person.",
+      "You are my sunshine on rainy days.",
+      "You’re my everything.",
+      "I’m so lucky to have you.",
+      "Just for being yourself.",
+      "You're the best.",
+      "You make life feel complete.",
+      "I love how you always know what I need.",
+      "You’re my forever person.",
+      "You make me laugh even when I feel sad.",
+      "I love your gentle soul.",
+      "You’re the most important person in my life.",
+      "You’re the reason my heart feels full.",
+      "You make every day special.",
+      "I love how we make everything fun together.",
+      "You’re the love of my life, forever.",
+      "You complete me.",
+      "You’re my best friend, my love, my everything.",
+      "I’ll always love you.",
+      "You are the one I’ve been waiting for.",
+      "I’m the luckiest person to have you.",
+      "You’re the one I want to spend my life with.",
+      "I love how we support each other.",
+      "You’re my best decision.",
+      "You’re the most beautiful person I know.",
+      "You’re my favorite part of every day.",
+      "I love the way you look at me.",
+      "You’re my greatest blessing.",
+      "You are my reason for everything.",
+      "You are my heart.",
+      "I love how you make me feel like I’m enough.",
+      "You are my home.",
+      "I’ll always be grateful for you.",
+      "You make me a better person.",
+      "You are everything I’ve ever wanted.",
+      "I love you more than words can say.",
+      "You’re the best part of my life.",
+      "I love our story.",
+      "You make every day better.",
+      "You make me feel cherished.",
+      "You are my forever love.",
+      "I’m thankful for you every day.",
+      "You are my perfect match.",
+      "You bring so much joy into my life.",
+      "I love you more than you’ll ever know.",
+      "You’re my heart’s desire.",
+      "You make my world complete.",
+      "You are everything to me."
     ];
 
     let currentCardIndex = 0;
@@ -161,11 +267,9 @@
     });
 
     function showCard(index) {
-      // Clear the container before adding a new card
-      cardsContainer.innerHTML = '';
-
       const card = document.createElement('div');
       card.classList.add('card');
+      card.classList.add('show');
       card.innerText = reasons[index];
       cardsContainer.appendChild(card);
 
@@ -181,16 +285,23 @@
     function nextCard() {
       if (currentCardIndex < reasons.length - 1) {
         currentCardIndex++;
-        showCard(currentCardIndex);
+        updateCards();
       }
     }
 
     function prevCard() {
       if (currentCardIndex > 0) {
         currentCardIndex--;
-        showCard(currentCardIndex);
+        updateCards();
       }
     }
+
+    function updateCards() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => card.remove());
+      showCard(currentCardIndex);
+    }
+
   </script>
 </body>
 </html>
